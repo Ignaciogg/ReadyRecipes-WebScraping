@@ -1,0 +1,974 @@
+,Id,Nombre
+0,746,aceite de algodon
+1,747,aceite de cacahuete
+2,748,aceite de coco
+3,753,aceite de colza
+4,749,aceite de germen de trigo
+5,2541,aceite de girasol
+6,754,aceite de grano de uva
+7,755,aceite de higado de bacalao
+8,2542,aceite de lino
+9,750,aceite de nuez
+10,2543,aceite de oliva
+11,2544,aceite de oliva virgen extra
+12,2545,aceite de oliva virgen extra produccion ecologica
+13,751,aceite de palma
+14,752,aceite de sesamo
+15,2546,aceite de soja
+16,2214,aceituna
+17,2215,aceituna negra con hueso
+18,2212,acelga cruda
+19,2359,acelga en conserva
+20,2360,acelgas hervidas
+21,733,achicoria cruda
+22,2425,agua de la red
+23,2426,agua mineral mineralizacion debil
+24,1015,agua con gas embotellada
+25,2216,aguacate
+26,2217,aguacate congelado
+27,2427,aguardiente
+28,2361,ajo
+29,2573,ajo en polvo
+30,2362,ajo frito
+31,2473,albahaca
+32,2218,albaricoque
+33,2474,albondigas en conserva
+34,1176,alcachofa cruda
+35,2363,alcachofas en conserva
+36,2364,alcaparra
+37,790,alioli
+38,2640,almeja
+39,2641,almejas en conserva
+40,896,almendra cruda
+41,2181,almendra cruda con cascara
+42,897,almendra frita salada
+43,2182,almendra tostada
+44,893,almidon de arroz
+45,1012,almidon de maiz
+46,895,almidon de trigo
+47,2183,altramuz
+48,898,alubia blanca en conserva
+49,899,alubia blanca seca cruda
+50,900,alubia negra seca remojada hervida
+51,922,anacardo crudo
+52,2129,anchoas en aceite vegetal
+53,735,anguila al horno
+54,736,anguila cruda
+55,737,anguila hervida
+56,1169,angula cruda
+57,1022,anis seco
+58,789,aperitivos de trigo
+59,2366,apio crudo
+60,739,apio en conserva en salmuera
+61,2368,arandano
+62,740,arenque ahumado
+63,741,arenque salado
+64,2660,arroz
+65,2479,arroz con leche
+66,1120,arroz hinchado para el desayuno enriquecido
+67,904,arroz integral crudo
+68,1009,arroz integral hervido
+69,2661,arroz hervido
+70,2130,atun en aceite de oliva isabel
+71,2131,atun en aceite vegetal
+72,2132,atun en escabeche
+73,742,atun al horno
+74,2133,atun al natural
+75,2134,atun crudo
+76,2135,atun plancha
+77,2219,avellana
+78,2184,avellana cruda con cascara
+79,1010,avena cruda
+80,2253,avestruz solomillo crudo
+81,2475,azafran
+82,2642,azucar blanca
+83,780,azucar moreno
+84,2136,bacaladilla
+85,745,bacalao ahumado
+86,2302,bacalao crudo
+87,795,bacalao fresco al horno
+88,2304,bacalao frito
+89,1163,bacalao salado crudo
+90,797,bacalao salado remojado crudo
+91,680,bacon ahumado a la parrilla
+92,682,bacon crudo con grasa separable
+93,2369,bambu crudo
+94,766,"barra chocolate tipo ""bounty"""
+95,770,"barra de chocolate tipo ""kit-kat"""
+96,769,"barra de chocolate tipo ""mars"""
+97,2662,barrita cereales con chocolate
+98,2663,barrita cereales con frutas
+99,767,barrita cereales maiz y trigo
+100,768,barrita cereales trigo y chocolate
+101,2480,batido de chocolate
+102,2481,batido de fresa
+103,2482,batido de soja
+104,2519,batido fermentado de soja
+105,683,batido lacteo de cacao bajo en calorias
+106,685,batido lacteo de fresa bajo en calorias
+107,2491,bebida de soja
+108,2429,bebida energetica
+109,2430,bebida isotonica
+110,2306,berberechos
+111,2307,berberechos en conserva
+112,2370,berenjena
+113,730,berenjena frita en aceite de girasol
+114,732,berro crudo
+115,2312,besugo
+116,798,bigaro hervido
+117,2664,bizcocho
+118,2476,bocadillo
+119,2313,bogavante
+120,799,bogavante hervido
+121,2665,bolleria generico
+122,2647,bombon
+123,731,boniato crudo
+124,800,bonito del norte al vapor
+125,801,bonito del norte enlatado en aceite de soja
+126,2314,bonito en aceite vegetal
+127,802,bonito enlatado en aceite escurrido
+128,2316,boqueron
+129,2318,boqueron frito
+130,2371,borraja
+131,803,breca cruda
+132,1177,brecol crudo
+133,2372,brecol hervido
+134,2254,butifarra
+135,804,caballa al horno
+136,2319,caballa cruda
+137,805,caballa enlatada en aceite escurrida
+138,806,cabracho o rascacio crudo
+139,2711,cabrito lechal costillar asado
+140,2685,cabrito lechal costillar crudo
+141,2686,cabrito lechal espalda cruda
+142,2687,cabrito lechal pierna cruda
+143,686,cabrito parte s/e crudo con grasa separable
+144,2185,cacahuete crudo con cascara
+145,925,cacahuete frito salado
+146,2186,cacahuete tostado salado
+147,2648,cacao en polvo azucarado
+148,2431,cacao en polvo azucarado bajo en calorias
+149,681,cafe con leche
+150,1019,cafe en grano o molido descafeinado
+151,1109,cafe en polvo sin reconstituir
+152,2432,cafe en polvo soluble
+153,2433,cafe infusion
+154,2434,cafe infusion descafeinado
+155,2435,cafe sucedaneo soluble
+156,2376,calabacin
+157,2377,calabacin asado
+158,2378,calabaza cruda
+159,1183,calabaza hervida
+160,2320,calamar asado
+161,1164,calamar conserva
+162,807,calamar crudo
+163,2323,calamares en aceite vegetal
+164,792,caldo vegetal
+165,687,callos de ternera
+166,2321,camaron
+167,2477,canela en polvo
+168,2478,canelones
+169,2324,cangrejo
+170,2325,cangrejo de rio crudo
+171,810,cangrejo en conserva
+172,2379,canonigos
+173,2213,caqui
+174,2326,caracol
+175,2645,caramelo
+176,2380,cardo
+177,2327,cardo tallo en conserva
+178,2701,carne de cerdo de capa blanca cabezada parte magra cruda
+179,2700,carne de cerdo de capa blanca cabezada partes grasa y magra crudo
+180,2697,carne de cerdo de capa blanca chuleta parte magra cruda
+181,2696,carne de cerdo de capa blanca chuleta partes grasa y magra cruda
+182,2699,carne de cerdo de capa blanca jamon parte magra crudo
+183,2698,carne de cerdo de capa blanca jamon partes grasa y magra crudo
+184,2695,carne de cerdo de capa blanca lomo parte magra crudo
+185,2694,carne de cerdo de capa blanca lomo partes grasa y magra crudo
+186,2706,carne de vacuno cadera partes magra y grasa crudo
+187,2710,carne de vacuno carrillera partes magra y grasa crudo
+188,2704,carne de vacuno costillar partes magra y grasa crudo
+189,2702,carne de vacuno lomo partes magra y grasa crudo
+190,2708,carne de vacuno rabo partes magra y grasa crudo
+191,2705,carne de vacuno redondo partes magra y grasa crudo
+192,2703,carne de vacuno solomillo partes magra y grasa crudo
+193,2680,carne picada
+194,811,carpa al horno
+195,812,carpa cruda
+196,2187,castaña cruda
+197,935,castaña tostada
+198,2436,cava
+199,2338,caviar
+200,1014,cebada cruda
+201,2381,cebolla
+202,2382,cebolla asada
+203,2383,cebolla hervida
+204,850,cebollino crudo
+205,2256,cecina
+206,1187,centeno crudo
+207,2328,centollo crudo
+208,2257,cerdo chuleta crudo
+209,2258,cerdo costilla crudo
+210,688,cerdo lomo asado
+211,2259,cerdo lomo crudo
+212,2260,cerdo panceta cruda
+213,2261,cerdo parte sin especificar
+214,689,cerdo pierna cruda con grasa separable
+215,961,cerdo solomillo asado
+216,1021,cerdo solomillo crudo
+217,2666,cereales base trigo y chocolate
+218,1018,cereales desayuno base de arroz chocolateado
+219,1026,cereales desayuno base de arroz y miel
+220,1028,cereales desayuno base de arroz trigo y fruta
+221,1031,cereales desayuno base de maiz y miel
+222,1032,cereales desayuno base de maiz y trigo
+223,1188,cereales desayuno base de maiz trigo y avena
+224,1034,cereales desayuno base de trigo azucarado
+225,1035,cereales desayuno base de trigo y arroz
+226,1036,cereales desayuno base de trigo y frutas
+227,1038,cereales desayuno base de trigo y miel
+228,1039,cereales desayuno base de trigo avena maiz y miel
+229,1040,cereales desayuno base de trigo avena maiz miel y nueces
+230,2155,cereales desayuno base muesli
+231,1042,cereales desayuno maiz azucarado
+232,1119,"cereales para el desayuno ricos en fibra tipo ""all-bran"""
+233,2667,cereales en polvo solubles (eko)
+234,2220,cereza
+235,2437,cerveza con alcohol
+236,2438,cerveza sin alcohol
+237,2439,cerveza baja en alcohol
+238,1108,cerveza oscura 8°- 9°
+239,2384,champiñon
+240,2385,champiñones en conserva
+241,2221,chayote crudo
+242,2649,chicle sin azucar
+243,793,chile rojo
+244,794,chile verde
+245,2329,chipiron
+246,2222,chirimoya
+247,2330,chirla
+248,2262,chistorra
+249,2650,chocolate blanco
+250,2651,chocolate con leche
+251,776,chocolate con leche y almendras
+252,777,chocolate con leche y arroz
+253,778,chocolate con nueces de macadamia
+254,781,chocolate negro con almendras
+255,782,chocolate negro con azucar
+256,788,chocolate negro
+257,2263,choped pork
+258,2264,chorizo
+259,971,chufa cruda
+260,2668,churro
+261,962,ciervo parte s/e crudo con grasa separable
+262,2331,cigala
+263,1172,ciruela con piel cruda
+264,2223,ciruela sin piel
+265,908,coco desecado
+266,909,coco fresco
+267,2386,col blanca cruda
+268,1180,col de bruselas cruda
+269,1178,col lombarda hervida
+270,852,col rizada cruda
+271,859,coliflor congelada cruda
+272,2387,coliflor hervida
+273,2571,comino
+274,2572,complejo vitaminico
+275,1107,coñac
+276,1162,conejo de granja carne cruda
+277,964,conejo entero estofado
+278,1165,confitura frutas s/e baja en calorias
+279,2332,congrio
+280,966,corazon de cordero crudo
+281,970,corazon de pollo crudo
+282,2265,corazon de vaca crudo
+283,972,corazon de cerdo crudo
+284,973,corazon de vaca/buey cocido
+285,1024,corazon de vaca/buey crudo
+286,2712,cordero lechal costillar asado
+287,2688,cordero lechal costillar crudo
+288,2689,cordero lechal espalda cruda
+289,2690,cordero lechal pierna cruda
+290,2713,cordero ligero costillar asado
+291,2691,cordero ligero costillar crudo
+292,2692,cordero ligero espalda cruda
+293,2693,cordero ligero pierna cruda
+294,2266,cordero costilla crudo
+295,2267,cordero parte sin especificar
+296,974,cordero pierna con grasa asada
+297,2574,corteza de trigo
+298,2483,crema catalana
+299,2188,crema de almendras
+300,979,crema de cacahuete
+301,783,crema de chocolate con avellanas
+302,903,crema de chocolate y nata
+303,902,crema de chocolate baja en calorias
+304,901,crema de coco
+305,877,crema de vainilla y mousse de chocolate
+306,784,crema inglesa
+307,787,crema pastelera
+308,2484,cremoso san millan
+309,2669,croissant
+310,1043,croissant de chocolate
+311,2268,croquetas de pollo
+312,2485,cuajada
+313,2440,cubata
+314,2622,cubito de caldo
+315,2621,curry
+316,2224,datil
+317,2670,donut
+318,1044,donut de chocolate
+319,815,dorada cruda
+320,2333,dorada plancha
+321,2620,empanada de carne
+322,2619,empanadilla
+323,2388,endibia
+324,2618,eneldo seco
+325,2671,ensaimada
+326,2389,ensalada
+327,2617,ensaladilla rusa
+328,2390,escarola
+329,1179,esparrago verde
+330,2393,esparragos blancos en conserva
+331,2394,espinaca en conserva
+332,2395,espinaca hervida
+333,861,espinaca picada congelada cruda
+334,2616,fabada
+335,2334,faneca cruda
+336,2615,flamenquin
+337,2486,flan de huevo
+338,876,flan de huevo bajo en calorias
+339,2335,fletan crudo
+340,2269,foie gras
+341,914,frambuesa cruda
+342,2225,fresa
+343,2602,fritos de maiz
+344,786,fructosa
+345,2189,frutos secos
+346,1161,fuet
+347,1046,"galleta tipo ""digestiva"" con chocolate"
+348,2672,galleta salada
+349,1048,galleta barquillo con jalea de frutas
+350,1050,galleta cubierta de chocolate
+351,2673,galleta generico
+352,1102,"galleta tipo ""digestiva"""
+353,2674,galletas integrales
+354,875,galletas saladas con queso
+355,2675,galletas tipo maria
+356,1051,"galletas con chocolate tipo ""cookies"""
+357,1052,galletas de mantequilla
+358,975,gallina entera cruda
+359,2336,gallo
+360,816,gamba quisquilla congelada
+361,817,gamba roja cruda
+362,2337,gamba hervida
+363,2191,garbanzo en conserva
+364,2192,garbanzo hervido
+365,1020,garbanzo seco crudo
+366,2614,gazpacho
+367,2613,gelatina
+368,1111,germen de trigo
+369,2441,ginebra
+370,2676,gofio
+371,2612,gomasio
+372,2652,gominola generica
+373,2226,granada
+374,2547,grasa de pollo
+375,2396,grelo
+376,1185,grosella negra cruda
+377,999,grosella cruda
+378,1166,guayaba enlatada en almibar
+379,938,guayaba sin piel cruda
+380,2611,guindilla en polvo
+381,2610,guindilla picante
+382,1175,guisante congelado crudo
+383,1045,guisante congelado hervido
+384,1049,guisante seco crudo
+385,2193,guisantes en conserva
+386,2609,gusanito
+387,2194,haba fresca
+388,2195,haba frita
+389,1123,haba seca
+390,1128,haba seca remojada hervida
+391,1054,harina de avena
+392,1055,harina de avena cocida en agua
+393,1056,harina de cebada
+394,1112,harina de centeno
+395,2644,harina de maiz
+396,1125,harina de soja
+397,2677,harina de trigo
+398,1113,harina de trigo integral
+399,2487,helado de chocolate
+400,2488,helado de fresa
+401,2489,helado de nata
+402,2270,higado de pollo crudo
+403,967,higado de cerdo crudo
+404,1053,higado de vaca/buey crudo
+405,2227,higos y brevas
+406,2608,hinojo
+407,2607,hojaldre
+408,2442,horchata
+409,757,huevo de codorniz entero crudo
+410,2127,huevo de gallina fresco
+411,1173,huevo de gallina clara cruda
+412,758,huevo de gallina escalfado
+413,759,huevo de gallina frito
+414,2126,huevo de gallina hervido duro
+415,760,huevo de gallina pasado por agua
+416,761,huevo de gallina revuelto con mantequilla
+417,2125,huevo de gallina yema cruda
+418,762,huevo de gallina yema desecada
+419,764,huevo de pato crudo
+420,763,huevo de pavo entero crudo
+421,2443,infusion
+422,2653,jalea real
+423,2271,jamon asado
+424,965,jamon cocido categoria s/e
+425,2272,jamon cocido enlatado
+426,1781,jamon iberico de bellota
+427,1777,jamon iberico de cebo
+428,2273,jamon serrano
+429,2606,jengibre
+430,2196,judia blanca
+431,2197,judia pinta
+432,878,judia verde congelada cruda
+433,2198,judia verde cruda
+434,2397,judia verde hervida
+435,2199,judias blancas cocidas
+436,2398,judias verdes en conserva
+437,818,jurel crudo
+438,2123,kebab
+439,1168,kefir
+440,2605,ketchup
+441,2228,kiwi
+442,2274,lacon
+443,2509,lactosa
+444,2339,langosta
+445,2340,langostino
+446,2604,lasaña
+447,2603,laurel hoja
+448,907,leche condensada entera con azucar
+449,2490,leche de almendra
+450,1000,leche de cabra
+451,911,leche de coco
+452,1002,leche de oveja
+453,2492,leche de vaca desnatada condensada con azucar
+454,2493,leche de vaca entera
+455,912,leche en polvo semidesnatada
+456,2518,leche fermentada bifidobacterium entera natural
+457,2494,leche materna
+458,913,leche merengada
+459,915,leche desnatada pasteurizada
+460,916,leche semidesnatada pasteurizada
+461,2399,lechuga
+462,2548,lecitina de soja
+463,2275,lengua de cerdo cruda
+464,2276,lengua de cordero cruda
+465,983,lengua de buey cruda
+466,985,lengua de ternera cruda
+467,2341,lenguado
+468,820,lenguado al horno
+469,2342,lenguado frito
+470,2343,lenguado plancha
+471,1126,lenteja en conserva
+472,2200,lenteja hervida
+473,1065,lenteja seca cruda
+474,2444,licor apricot
+475,2445,licor benedictine
+476,2446,licor curaçao
+477,2447,licor de cafe
+478,2428,licor de crema 15-17% vol.
+479,2448,licores de frutas
+480,986,liebre entera cruda
+481,821,lija cruda
+482,1001,lima cruda
+483,2449,limonada
+484,1003,litchi crudo
+485,2400,lombarda
+486,2277,lomo embuchado
+487,2322,longaniza
+488,2344,lubina
+489,822,lucio al horno
+490,943,macedonia de frutas conserva en su jugo
+491,2678,magdalena
+492,879,maiz en mazorca congelado crudo
+493,1114,maiz en mazorca crudo
+494,2229,mandarina
+495,2230,mandarina congelada
+496,1186,mango crudo
+497,2549,manteca
+498,756,mantequilla salada
+499,2550,mantequilla baja en calorias
+500,2231,manzana
+501,2551,margarina de maiz
+502,2552,margarina baja en calorias
+503,1060,masa de hojaldre cruda
+504,2553,mayonesa con aceite de girasol
+505,874,mayonesa aceite de oliva
+506,873,mayonesa aceite de soja
+507,2554,mayonesa baja en calorias
+508,2345,mejillon
+509,823,mejillon en conserva al natural
+510,2346,mejillon en escabeche
+511,824,mejillon hervido
+512,2232,melocoton
+513,2233,melocoton en almibar
+514,946,melocoton desecado
+515,2234,melon
+516,1006,membrillo crudo
+517,2401,menestra de verduras congelada
+518,872,menta fresca
+519,2347,merluza fresca
+520,825,merluza congelada cruda
+521,2348,merluza rebozada frita
+522,771,mermelada de albaricoque
+523,2654,mermelada de albaricoque y melocoton baja en calorias
+524,772,mermelada de ciruela
+525,2655,mermelada de frambuesa
+526,2656,mermelada de fresa
+527,2657,mermelada de fresa baja en calorias
+528,773,mermelada de grosella roja
+529,774,mermelada de mora
+530,775,mermelada de naranja
+531,826,mero crudo
+532,2349,mero plancha
+533,2643,miel
+534,2156,mijo
+535,2157,miso
+536,2601,mojo picon
+537,2278,molleja de cordero
+538,2280,morcilla
+539,2281,morcilla frita
+540,2282,mortadela
+541,2600,mostaza
+542,2496,mousse de chocolate
+543,917,mousse de queso fresco con frutas
+544,918,mousse de queso fresco desnatado azucarado
+545,919,mousse de queso fresco desnatado con frutas
+546,920,mousse de yogur con frutas
+547,921,mousse de yogur natural
+548,2158,muesli
+549,827,mujol al horno
+550,828,mujol crudo
+551,880,nabo pelado crudo
+552,1062,napolitana rellena con crema de cacao
+553,2235,naranja
+554,2555,nata montada
+555,923,nata liquida para cocinar 18% de grasa
+556,2497,natillas sabor vainilla
+557,2350,necora
+558,1106,nectar de albaricoque envasado
+559,1027,nectar de ciruela
+560,1057,nectar de frutas exoticas envasado
+561,1061,nectar de mango envasado
+562,1105,nectar de maracuya envasado
+563,1104,nectar de melocoton
+564,1103,nectar de naranja envasado
+565,1101,nectar de pera envasado
+566,1100,nectar de piña
+567,1099,nectar de pomelo
+568,2236,nectarina
+569,881,niscalo crudo
+570,956,nispero con piel crudo
+571,2237,nispero conserva en su jugo
+572,2238,nispero sin piel  congelado
+573,2201,nuez
+574,2599,nuez moscada
+575,2202,nuez cruda con cascara
+576,978,oca sin piel asada
+577,2598,oregano seco
+578,829,ostra cruda
+579,2597,paella
+580,2596,paella marinera
+581,2159,palmera
+582,882,palmito en conserva
+583,830,palometa cruda
+584,871,palomitas de maiz sin aceite sin sal
+585,2160,pan blanco de barra
+586,1064,pan blanco de barra sin sal
+587,2161,pan blanco de molde tostado
+588,2162,pan blanco frito
+589,1066,"pan blanco tipo ""baguette"""
+590,2165,pan blanco tostado
+591,2166,pan blanco tostado sin sal
+592,1067,pan de avena
+593,1070,pan de cebada
+594,2167,pan de centeno
+595,2168,pan de leche
+596,1071,pan de maiz
+597,2163,pan integral
+598,2164,pan integral de molde tostado
+599,2169,pan integral sin sal
+600,2170,pan integral tostado
+601,2171,pan rallado
+602,2173,pan tostado integral
+603,2174,pan tipo hamburguesa
+604,2283,panceta frita
+605,2351,panga cruda
+606,1008,papaya cruda
+607,2239,paraguaya
+608,1118,pasta alimenticia con huevo cruda
+609,1072,pasta alimenticia con huevo hervida
+610,1073,pasta alimenticia con vegetales cruda
+611,1117,pasta alimenticia cruda
+612,1074,pasta alimenticia integral cruda
+613,1076,pasta alimenticia integral hervida
+614,1077,pasta alimenticia rellena con carne hervida
+615,2240,pasta de fruta
+616,2567,pasta de sesamo
+617,2175,pastas de te
+618,2658,pastel
+619,1115,pastel con fruta confitada
+620,1116,pastel de chocolate
+621,1078,pastel de manzana
+622,2402,patata asada
+623,2403,patata cruda
+624,883,patata frita con aceite s/e sin sal
+625,2404,patata hervida
+626,2405,patata prefrita congelada
+627,884,patata salteada con aceite girasol
+628,870,"patatas chips ""lights"""
+629,2594,patatas fritas chips
+630,2284,pate de higado de cerdo 30% de grasa
+631,968,pate de pimienta
+632,969,pato entero asado
+633,976,pato entero crudo
+634,2285,pavo crudo
+635,2286,pavo fiambre
+636,2287,pavo fiambre bajo en grasa
+637,1059,pavo muslo con piel crudo
+638,2288,pavo pechuga con piel crudo
+639,990,pavo pechuga sin piel a la plancha
+640,2406,pepinillos en vinagre
+641,2407,pepino
+642,2241,pera
+643,1013,pera enlatada en almibar
+644,831,perca al horno
+645,832,perca cruda
+646,2352,percebe
+647,2289,perdiz cruda
+648,2593,perejil fresco
+649,1174,pescadilla congelada cruda
+650,834,pescadilla rebozada en harina frita
+651,2354,pescado generico
+652,928,petit liquido sabor fresa
+653,924,petit suïsse cereales y fruta
+654,926,petit suisse chocolate
+655,927,petit suisse fresa
+656,1007,petit suisse natural azucarado
+657,835,pez espada crudo
+658,2356,pez espada emperador plancha
+659,977,pichon sin piel asado
+660,2357,pijota cruda
+661,2592,pimenton en polvo
+662,2591,pimienta blanca
+663,2590,pimienta negra
+664,2408,pimiento morron en conserva
+665,2409,pimiento rojo crudo
+666,2410,pimiento frito
+667,2242,piña
+668,2243,piña en almibar
+669,1167,piña enlatada en su jugo
+670,2244,piñon
+671,2203,piñon crudo con cascara
+672,2204,pipa de calabaza
+673,2205,pipa de girasol
+674,2206,pipas de girasol peladas con sal
+675,2207,pistacho
+676,2589,pizza precocinada
+677,2245,platano
+678,836,platija al vapor
+679,837,platija cruda
+680,2290,pollo empanado frito
+681,2291,pollo ala con piel cruda
+682,980,pollo entero con piel asado
+683,2292,pollo entero con piel crudo
+684,2293,pollo fiambre
+685,2294,pollo fiambre bajo en grasa
+686,2295,pollo frito
+687,992,pollo muslo con piel asado
+688,993,pollo muslo con piel crudo
+689,2296,pollo parte sin especificar
+690,994,pollo pechuga con piel crudo
+691,2297,pollo pechuga plancha
+692,2246,pomelo
+693,2495,preparado lacteo con omega 3
+694,2588,pudding de pasas
+695,2411,puerro crudo y congelado
+696,2412,puerro en conserva
+697,2298,pulmon de cerdo crudo
+698,2299,pulmon de cordero crudo
+699,2300,pulmon de ternera crudo
+700,2471,pulpo
+701,2374,pulpo hervido
+702,886,pure de patata y queso en copos
+703,888,pure de patata con verduras en copos
+704,2413,pure de patata en copos
+705,2414,pure de patatas y champiñones en copos
+706,887,pure de patata con leche
+707,691,queso afuega'l pitu
+708,692,queso ahumado de aliva
+709,2498,queso azul
+710,2499,queso brie
+711,2500,queso cabra curado
+712,2501,queso cabrales
+713,929,queso camembert 20-30% mg/es
+714,930,queso camembert 60% mg/es
+715,693,queso cantabria
+716,694,queso casin
+717,715,queso castellano
+718,700,queso cebreiro
+719,1005,queso cheddar
+720,2502,queso curado generico
+721,705,queso de aracena
+722,716,queso de arzua
+723,2503,queso de bola
+724,696,queso de cadiz
+725,931,queso de castilla-la mancha oveja y cabra
+726,932,queso de castilla-la mancha oveja vaca y cabra
+727,933,queso de castilla-leon oveja y vaca
+728,695,queso de murcia al vino
+729,706,queso de tenerife
+730,707,queso de tietar
+731,2504,queso edam
+732,2505,queso emmental
+733,2506,queso en porciones
+734,703,queso flor de guia
+735,2507,queso fresco de burgos
+736,934,queso fresco cabra
+737,939,queso fresco desnatado con frutas
+738,940,queso fundido extragraso (>60% mg/es)
+739,704,queso gata-hurdes
+740,698,queso gaztazarra
+741,941,queso gouda
+742,711,queso grazalema
+743,1011,queso gruyer
+744,699,queso herreño
+745,717,queso ibores
+746,718,queso mahon
+747,722,queso majorero
+748,2508,queso manchego
+749,942,queso manchego en aceite
+750,2510,queso mozzarella
+751,944,queso munster
+752,2511,queso para untar
+753,945,queso para untar con finas hierbas
+754,947,queso para untar con salmon
+755,948,queso para untar natural bajo en calorias
+756,2512,queso parmesano
+757,708,queso pasiego
+758,701,queso pedroches
+759,709,queso peñamellera
+760,713,queso picon
+761,712,queso porrua
+762,723,queso raclette
+763,2513,queso rallado generico
+764,2514,queso roquefort
+765,721,queso san simon
+766,2515,queso semicurado generico
+767,714,queso serrat
+768,710,queso servilleta
+769,697,queso tetilla
+770,2516,queso tierno generico
+771,720,queso torta del casar
+772,702,queso tupi
+773,719,queso zamorano
+774,1083,quinoa cruda
+775,2415,rabano
+776,2301,rabo de toro
+777,838,rape a la parrilla
+778,2623,rape crudo
+779,2624,rape plancha
+780,2470,raya cruda
+781,2450,"refresco ""tipo gaseosa"""
+782,2451,refresco con gas sabor cola sin cafeina
+783,2452,refresco con gas sabor cola sin cafeina bajo en calorias
+784,2453,refresco de te
+785,2454,refresco de te bajo en calorias
+786,2455,"refresco tipo ""tonica"""
+787,2456,refresco con gas sabor naranja
+788,2457,refresco sabor cola
+789,2458,refresco sabor cola bajo en calorias
+790,1098,refresco sabor limon con gas
+791,1097,refresco sabor naranja sin gas
+792,2659,regaliz
+793,2416,remolacha en conserva
+794,2417,repollo
+795,2517,requeson
+796,1063,riñon de cordero crudo
+797,1069,riñon de ternera crudo
+798,2625,rodaballo
+799,2587,rollito de primavera
+800,2586,romero
+801,1096,ron
+802,2176,rosquilla
+803,2418,rucula
+804,866,sal de mar
+805,2585,sal yodada
+806,2303,salami
+807,2308,salchicha de pollo fresca
+808,2305,salchicha fresca
+809,2309,"salchicha tipo ""frankfurt"""
+810,988,salchicha tipo pais a la plancha
+811,982,salchicha tipo viena
+812,2310,salchichon
+813,839,salema cruda
+814,2626,salmon
+815,2627,salmon ahumado
+816,2628,salmon plancha
+817,2629,salmonete
+818,2584,salsa agridulce
+819,2583,salsa al curry
+820,865,salsa al roquefort
+821,2581,salsa barbacoa
+822,2580,salsa bechamel
+823,2579,salsa boloñesa
+824,858,salsa carbonara
+825,2577,salsa de queso
+826,2575,salsa de soja
+827,857,salsa napolitana
+828,856,salsa siciliana picante
+829,855,salsa vinagreta con aceite de oliva
+830,2177,salvado de trigo
+831,2569,san jacobo congelado
+832,2247,sandia
+833,2459,sangria
+834,2630,sardina
+835,2631,sardina asada
+836,2632,sardina enlatada en aceite escurrida
+837,2633,sardina enlatada en escabeche
+838,2634,sargo crudo
+839,2568,seitan
+840,2178,semilla de lino
+841,1084,semola de trigo cruda
+842,1085,semola de trigo hervida
+843,2635,sepia
+844,1127,sesamo semilla
+845,1075,sesos de cerdo crudos
+846,1080,sesos de cordero crudos
+847,1047,sesos de ternera crudos
+848,2419,seta
+849,2420,seta plancha
+850,2460,sidra
+851,1086,sobao
+852,2311,sobrasada
+853,1110,soda
+854,1182,sofrito
+855,1124,soja fresca
+856,2208,soja frita
+857,849,soja germinada en conserva
+858,1129,soja seca cruda
+859,1122,soja seca remojada hervida
+860,2565,sopa de sobre maravilla
+861,2564,sopa de sobre sin reconstituir
+862,2563,suplemento proteico
+863,2562,surimi
+864,2561,tabasco
+865,891,tapioca hervida
+866,1094,te infusion con leche
+867,843,tenca cruda
+868,2461,tequila
+869,1030,ternera costilla cruda
+870,991,ternera lomo crudo con grasa separable
+871,989,ternera parte s/e asada
+872,2315,ternera parte sin especificar cruda con grasa separable
+873,984,ternera solomillo asado
+874,1029,ternera solomillo sin grasa crudo
+875,2317,tocino
+876,1121,tofu
+877,2421,tomate
+878,2560,tomate frito
+879,2422,tomate asado
+880,2423,tomate maduro pelado y triturado enlatado
+881,892,tomate maduro pure
+882,2559,tomillo seco
+883,2180,torta de aceite
+884,779,tortilla a la francesa
+885,1088,trigo entero crudo
+886,2636,trucha
+887,844,trucha ahumada
+888,894,trufa cruda
+889,785,turron tipo alicante
+890,2249,uva blanca
+891,2250,uva blanca congelada
+892,1017,uva negra cruda
+893,2251,uva pasa
+894,995,vaca/buey parte s/e asado
+895,997,vaca/buey parte s/e estofado
+896,996,vaca/buey solomillo a la plancha
+897,981,vaca/buey solomillo crudo
+898,2709,vacuno higado crudo
+899,2707,vacuno mollejas crudas
+900,2558,vainilla
+901,1095,vermut s/e
+902,2637,vieira
+903,846,vieja cruda
+904,2557,vinagre balsamico
+905,2556,vinagre de manzana
+906,2124,vinagre de vino
+907,2462,vino blanco
+908,2463,vino dulce tipo oporto
+909,2464,vino rosado
+910,2465,vino tinto
+911,1092,vodka
+912,847,volador crudo
+913,2466,whisky
+914,2520,yogur griego
+915,2521,"yogur liquido ""tipo actimel"""
+916,950,yogur liquido aromatizado sabor s/e
+917,1160,yogur liquido con frutas s/e
+918,952,yogur liquido entero con cereales
+919,1133,yogur liquido natural azucarado
+920,953,yogur bulgaro
+921,2532,yogur desnatado aromatizado sabor s/e
+922,955,yogur desnatado con cereales
+923,2524,yogur desnatado con cereales manzana y ciruela
+924,1135,yogur desnatado con cereza y frambuesa
+925,2525,yogur desnatado con ciruela albaricoque y fibra
+926,2526,yogur desnatado con fresa grosella y fibra
+927,2527,yogur desnatado con frutas
+928,1137,yogur desnatado con frutas del bosque
+929,1140,yogur desnatado con frutas tropicales
+930,1141,yogur desnatado con manzana
+931,1144,yogur desnatado con melocoton y maracuya
+932,2528,yogur desnatado con melocoton frambuesa y fibra
+933,1149,yogur desnatado con piña y pomelo
+934,2530,yogur desnatado sabor natural
+935,2531,yogur desnatado sabor natural azucarado
+936,1158,yogur desnatado sabor vainilla
+937,1131,yogur enriquecido con frutas
+938,1143,yogur enriquecido natural
+939,1145,yogur enriquecido natural azucarado
+940,1130,yogur enriquecido natural con nata
+941,1150,yogur enriquecido sabor s/e
+942,2533,yogur entero con cereales y fresas
+943,1159,yogur entero con fresas
+944,2534,yogur entero con frutas del bosque
+945,1155,yogur liquido desnatado natural
+946,2535,yogur liquido entero con fresas
+947,2536,yogur liquido entero con frutas
+948,2537,yogur liquido entero sabor fresa
+949,2538,yogur liquido entero sabor fresa y platano
+950,2539,yogur liquido entero sabor frutas del bosque
+951,2540,yogur liquido entero sabor piña y coco
+952,2639,zamburiñas
+953,2424,zanahoria cruda
+954,1091,zumo de grosella negra
+955,1090,zumo de grosella roja
+956,1089,zumo de lima envasado
+957,937,zumo de limon fresco
+958,1081,zumo de mango
+959,2467,zumo de manzana
+960,2468,zumo de naranja
+961,2469,zumo de piña
+962,1068,zumo de piña y uva
+963,1079,zumo de pomelo envasado
+964,2248,zumo de tomate fresco
+965,2365,zumo de uva
+966,791,zumo de uva y melocoton
+967,2252,zumo de zanahoria fresco
+968,3521,carne
+969,6124,aceite
+970,6324,huevo
+971,6521,pollo
+972, 6032,merluza
