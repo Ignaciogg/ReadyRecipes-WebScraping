@@ -1,11 +1,15 @@
 # pip install google-api-python-client
 # pip install mysql.connector
 
+import AudioConverter as AudioConverter
+import YoutubeDownloader as YoutubeDownloader
+
 import requests
 import json
 import mysql.connector
 import datetime
 from pytube import YouTube
+import os
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -43,7 +47,25 @@ for item in json_data["items"]:
     else:
         print("El URL no existe en la tabla de recetas")
 
-        # 3. EXTRAER EL NUMERO DE COMENTARIOS DE ESTE VIDEO
+        
+        # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
+        def descargarVideo(url):
+            yt = YouTube(url)
+            titulo = yt.title
+            autor = yt.author
+            t = yt.streams.filter(only_audio=True).first()
+            nombre = 'Otros'+str(len(os.listdir(str(pathTextos) + '\\' + 'Otros'))+1)
+            t.download(pathVideos, nombre+'.mp4')
+            AudioConverter.convertirAudio(nombre)
+            try:
+                texto = SpeechRecognition.transcribirAudio(nombre)
+                receta = Receta(titulo, url, autor, texto).guardarTexto(str(pathTextos)+'\\'+'Otros'+'\\'+nombre+'.txt')
+            except:
+                print('ERROR. Audio mayor 10MB')
+                os.remove(str(pathAudios) + '\\'+nombre+'.wav')
+
+
+        # 4. EXTRAER EL NUMERO DE COMENTARIOS DE ESTE VIDEO
         youtubeCommentConnector = build('youtube', 'v3', developerKey=yt_key)
         try:
             response = youtubeCommentConnector.commentThreads().list(
@@ -56,14 +78,15 @@ for item in json_data["items"]:
         except HttpError as error:
             print(f'Ha ocurrido un error: {error}')
 
-        # 4. AÑADIMOS MÁS ATRIBUTOS
+
+        # 5. AÑADIMOS MÁS ATRIBUTOS
         yt = YouTube(video_url)
         titulo = yt.title
         autor = yt.author
 
         fecha_actual = datetime.datetime.now().strftime('%Y-%m-%d')
 
-        # 5. INSERTAMOS EN LA BASE DE DATOS
+        # 6. INSERTAMOS EN LA BASE DE DATOS
         sql = "INSERT INTO Receta (url, titulo, texto, categoria, comentarios, nutriscore, sentimiento, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         val = (video_url, titulo, 'Aperitivo', num_comentarios, nutriscore, 1.5, fecha_actual)
         mycursor.execute(sql, val)
