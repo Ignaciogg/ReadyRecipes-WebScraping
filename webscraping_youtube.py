@@ -1,4 +1,8 @@
 import pprint
+from pytube import YouTube
+import re
+import requests
+
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
@@ -23,7 +27,7 @@ def get_youtube():
     
     return youtube'''
     # Arguments that need to passed to the build function
-    DEVELOPER_KEY = "API-KEY"
+    DEVELOPER_KEY = "AIzaSyDjUEDI167EKbkAV9VocPKsG3ZPZyruhro"
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
     
@@ -52,7 +56,6 @@ def get_video_json(video_id):
         video_json.append({
             'video_id': video_id,
             'video_titulo':video_title,
-            #'descripcion':descripcion,
             'fecha_publicado':fecha_publicado,
             'canal_id': canal_id,
             'canal_nombre':canal_name
@@ -66,10 +69,7 @@ def get_canal_id(video_id):
     video_json=get_video_json(video_id)
     
     result_id=[]
-    
-    #for item in video_json:
-        #video_id = item['id']
-        #canal_id = item['snippet']['channelId']
+
     result_id.append({
         'video_id': video_json[0]['video_id'],
         'channel_id': video_json[0]['canal_id']
@@ -84,7 +84,7 @@ def buscar_comentarios(video_id, video_json):
     request = youtube.commentThreads().list(
         part='snippet',
         videoId=video_id,
-        maxResults=13
+        maxResults=50
     )
 
     response = request.execute()
@@ -105,16 +105,32 @@ def buscar_comentarios(video_id, video_json):
     return result_comment
 
 def get_id_video(url):
-    id_video = url.split('v=')[1]
-    if len(id_video)==11:
-        return id_video
-    else:
-        return 0
+    yt = YouTube(url)
+    video_id = yt.video_id
+    return video_id
+
+def guardar_comentarios(json_comentarios):
+    comentarios_array=[]
+    
+    for comment in json_comentarios:
+        comm = re.sub('[^\w\s#@/:%.,_-]', '', comment['comentario'], flags=re.UNICODE)
+        comentarios_array.append(comm)
+        
+    return comentarios_array
 
 if __name__ == '__main__':
-    video_id=get_id_video('https://www.youtube.com/watch?v=Tyt5VbJL-zU')
-    print(get_canal_id(video_id))
+
+    video_id=get_id_video('https://www.youtube.com/watch?v=wkBUMvS-2ik')
+    print(video_id)
+
     video_json=get_video_json(video_id)
+
     pp = pprint.PrettyPrinter(indent=4)
     comentarios = buscar_comentarios(video_json[0]['video_id'],video_json[0])
-    pp.pprint(comentarios)
+
+    print(len(comentarios))
+    
+    array_comentarios=guardar_comentarios(comentarios)
+    for i in array_comentarios:
+        print(i)
+        print('--------------------')
