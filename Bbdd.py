@@ -21,10 +21,10 @@ class Bbdd:
         if consultaURL is None:
             return True
         else:
-            return False
-        
+            return False 
+    
     def insertarReceta(self, receta):
-        sql = "INSERT INTO Receta (url, titulo, texto, categoria, comentarios, nutriscore, sentimiento, comentarios_positivos, comentarios_neutros, comentarios_negativos, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        val = (receta.url, receta.titulo, receta.texto, receta.categoria, receta.comentarios, receta.nutriscore, receta.sentimiento,receta.c_positivo,receta.c_neutro,receta.c_negativo,receta.f_creacion)
+        sql = "INSERT INTO Receta (url, titulo, texto, categoria, comentarios, nutriscore, sentimiento, comentarios_positivos, comentarios_neutros, comentarios_negativos, fecha_creacion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (receta.url, receta.titulo, receta.texto, receta.categoria, receta.comentarios, receta.nutriscore, receta.sentimiento, receta.c_positivo, receta.c_neutro, receta.c_negativo, receta.f_creacion)
         self.cursor.execute(sql, val)
         self.db.commit()

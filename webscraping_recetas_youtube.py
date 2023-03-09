@@ -5,9 +5,9 @@
 # pip install googletrans==4.0.0-rc1
 
 from pytube import YouTube
+import subprocess
 import os
 import re
-import subprocess
 import speech_recognition as sr
 from textblob import TextBlob
 from googletrans import Translator
@@ -20,8 +20,8 @@ from Bbdd import Bbdd
 from webscraping_nutriscore import obtener_nutriscore
 #from webscraping_ingredientes import *
 
-maxVideos = 1
-maxComents = 50
+maxVideos = 1000
+maxComents = 1000
 bd = Bbdd()
 
 #Descargar video desde una url
@@ -54,25 +54,8 @@ def convertirAudio(nombre):
         print("No se puede borrar vídeo")
 
 #Transcribir audio a texto
-'''
 def transcribirAudio(nombre):
     ruta = nombre+'.wav'
-    #iniciamos reconocimiento de voz
-    re = sr.Recognizer()
-    #conversion audio-texto
-    with sr.AudioFile(ruta) as source:
-        info_audio = re.record(source)
-        texto = re.recognize_google(info_audio, language="es-ES")
-    try:
-        os.remove(ruta)
-    except:
-        print("No se puede borrar audio")
-    return texto
-'''
-
-def transcribirAudio(nombre):
-    ruta = nombre+'.wav'
-
     with open(os.devnull, 'w') as devnull:
         # Iniciamos reconocimiento de voz
         re = sr.Recognizer()
@@ -85,6 +68,11 @@ def transcribirAudio(nombre):
     except:
         print("No se puede borrar audio")  
     return texto
+
+#Borrar si existe algun fichero descargado anteriormente
+def borrarficheros():
+    os.remove('receta.mp4') if os.path.exists('receta.mp4') else None
+    os.remove('receta.wav') if os.path.exists('receta.wav') else None
 
 #Traducir un texto al ingles
 def traducir(texto):
@@ -142,7 +130,6 @@ superGustoso = 'https://www.youtube.com/watch?v=zfD0C3_gl7Q'
 listaVideos = obtenerVideos(superGustoso)
 
 for video in listaVideos["items"]: #Recorremos todos los videos
-    
     video_id = video["id"]["videoId"]
     video_url = f"https://www.youtube.com/watch?v={video_id}"
 
@@ -152,7 +139,8 @@ for video in listaVideos["items"]: #Recorremos todos los videos
 
     # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
     receta = Receta(video_url)
-    #receta.texto = descargarVideo(video_url)
+    borrarficheros()
+    receta.texto = descargarVideo(video_url)
     
     # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
     listaComentarios = obtenerComentarios(video_id)
@@ -175,11 +163,11 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     receta.sentimiento = sentimientoAcumulado/receta.comentarios
     # 5. AÑADIMOS MÁS ATRIBUTOS
     receta.titulo = video['snippet']['title']
-    obtener_nutriscore(receta.texto)
-    receta.categoria = ''
-    receta.nutriscore = ''
+    #obtener_nutriscore(receta.texto)
+    #receta.categoria = ''
+    #receta.nutriscore = 0.0
 
     print(receta.toString())
 
     # 6. INSERTAMOS EN LA BASE DE DATOS
-    #bd.insertarReceta(receta)    
+    bd.insertarReceta(receta)    
