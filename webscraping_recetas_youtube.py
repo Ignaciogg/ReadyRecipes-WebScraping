@@ -163,9 +163,9 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     receta.sentimiento = sentimientoAcumulado/receta.comentarios
     # 5. AÑADIMOS MÁS ATRIBUTOS
     receta.titulo = video['snippet']['title']
-    #obtener_nutriscore(receta.texto)
+    receta.nutriscore = obtener_nutriscore(receta.texto)
     #receta.categoria = ''
-    #receta.nutriscore = 0.0
+    
 
     print(receta.toString())
 

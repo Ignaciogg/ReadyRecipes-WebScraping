@@ -8,19 +8,47 @@ import requests
 from webscraping_ingredientes import buscar_ingredientes, buscador_precios_por_supermercado
 from Receta import Receta
 
-
 def obtener_nutriscore(texto_receta):
     food = pd.read_csv('./food.csv')
     food.drop(['Unnamed: 0'], axis=1, inplace=True)
 
     lista_ingredientes = buscar_ingredientes(texto_receta, food)
     data = buscador_precios_por_supermercado(lista_ingredientes, "mercadona")
-    '''
+    
+    contador = 0
+    sumatorio = 0
+    for ingrediente in data["Alimento"]:
+        url = f"https://es.openfoodfacts.org/cgi/search.pl?search_terms={ingrediente}&search_simple=1&action=process&json=1"
+        response = requests.get(url)
+        nutriscore = response.json()
+
+        if "products" in nutriscore and nutriscore["products"]:
+            producto = nutriscore["products"][0]
+            if "nutrition_grades" in producto:
+                nutriscore = producto["nutrition_grades"]
+                letras_a_numeros = {"a": 5, "b": 4, "c": 3, "d": 2, "e": 1}
+                sumatorio += letras_a_numeros[nutriscore]
+                contador+=1
+    return sumatorio/contador    
+
+
+
+
+
+'''
+def obtener_nutriscore(texto_receta):
+
+    food = pd.read_csv('./food.csv')
+    food.drop(['Unnamed: 0'], axis=1, inplace=True)
+
+    lista_ingredientes = buscar_ingredientes(texto_receta, food)
+    data = buscador_precios_por_supermercado(lista_ingredientes, "mercadona")
+    
     data2 = buscador_precios_por_supermercado(lista_ingredientes, "dia")
     data3 = buscador_precios_por_supermercado(lista_ingredientes, "carrefour")
 
     data = pd.concat([data1, data2, data3], axis=0)
-    '''
+    
     print("")
     # Añadir dos nuevas columnas al dataset
     data['Nutriscore'] = ''
@@ -72,7 +100,7 @@ def obtener_nutriscore(texto_receta):
 
     print("")
     print(data)
-    '''
+
     # Para hacer la media, primero eliminamos los valores nulos en Nutriscore
     data = data.dropna(subset=['Valor Nutriscore'])
     media = data['Valor Nutriscore'].mean()
@@ -88,4 +116,7 @@ def obtener_nutriscore(texto_receta):
     if media > 4:
         letraMedia = 'a'
 
-    print("La media del Nutriscore de esta receta es: " + str(media) + " -> " + letraMedia)'''
+    print("La media del Nutriscore de esta receta es: " + str(media) + " -> " + letraMedia)
+
+
+'''
