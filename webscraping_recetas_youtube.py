@@ -8,14 +8,16 @@ from pytube import YouTube
 import os
 import re
 import speech_recognition as sr
-from Receta import Receta
-from Bbdd import Bbdd
 from textblob import TextBlob
 from googletrans import Translator
 from time import sleep
 from ffmpy import FFmpeg
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+
+from Receta import Receta
+from Bbdd import Bbdd
+from webscraping_nutriscore import obtener_nutriscore
+#from webscraping_ingredientes import *
 
 maxVideos = 1
 maxComents = 50
@@ -127,7 +129,7 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
     receta = Receta(video_url)
     receta.titulo = video['snippet']['title']
-    #receta.texto = descargarVideo(video_url)
+    receta.texto = descargarVideo(video_url)
     
     # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
     listaComentarios = obtenerComentarios(video_id)
@@ -149,10 +151,13 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     receta.comentarios = len(comentarios)
     receta.sentimiento = sentimientoAcumulado/receta.comentarios
 
+    obtener_nutriscore(receta.texto)
 
     # 5. AÑADIMOS MÁS ATRIBUTOS
     receta.categoria = ''
     receta.nutriscore = ''
 
+    print(receta.toString())
+
     # 6. INSERTAMOS EN LA BASE DE DATOS
-    bd.insertarReceta(receta)    
+    #bd.insertarReceta(receta)    

@@ -25,8 +25,8 @@ class Receta():
         print(self.nutriscore)
         print(self.comentarios)
         print(self.sentimiento)
+        print(self.f_creacion)
         print(self.c_positivo)
         print(self.c_neutro)
         print(self.c_negativo)
-        print(self.f_creacion)
     
