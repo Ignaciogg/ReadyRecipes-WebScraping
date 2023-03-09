@@ -5,7 +5,6 @@
 # pip install googletrans==4.0.0-rc1
 
 from pytube import YouTube
-import subprocess
 import os
 import re
 import speech_recognition as sr
@@ -18,7 +17,6 @@ from googleapiclient.discovery import build
 from Receta import Receta
 from Bbdd import Bbdd
 from webscraping_nutriscore import obtener_nutriscore
-#from webscraping_ingredientes import *
 
 maxVideos = 1000
 maxComents = 1000
@@ -161,6 +159,7 @@ for video in listaVideos["items"]: #Recorremos todos los videos
         comentarios.append(texto)
     receta.comentarios = len(comentarios)
     receta.sentimiento = ((sentimientoAcumulado/receta.comentarios)+1) / 2 * 100
+    
     # 5. AÑADIMOS MÁS ATRIBUTOS
     receta.titulo = video['snippet']['title']
     receta.nutriscore = obtener_nutriscore(receta.texto)
