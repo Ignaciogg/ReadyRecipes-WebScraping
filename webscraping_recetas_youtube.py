@@ -7,6 +7,7 @@
 from pytube import YouTube
 import os
 import re
+import subprocess
 import speech_recognition as sr
 from textblob import TextBlob
 from googletrans import Translator
@@ -41,16 +42,19 @@ def convertirAudio(nombre):
     rutaEntrada = nombre+'.mp4'
     rutaSalida = nombre+'.wav'
 
-    ff = FFmpeg(executable='C:\\ffmpeg\\bin\\ffmpeg.exe',
-    inputs ={rutaEntrada: None},
-    outputs ={rutaSalida: None})
-    ff.run()
+    with open(os.devnull, 'w') as devnull:
+        ff = FFmpeg(executable='C:\\ffmpeg\\bin\\ffmpeg.exe',
+        inputs ={rutaEntrada: None},
+        outputs ={rutaSalida: None})
+        ff.run(stdout=devnull, stderr=devnull)
+
     try:
         os.remove(rutaEntrada)
     except:
         print("No se puede borrar vídeo")
 
 #Transcribir audio a texto
+'''
 def transcribirAudio(nombre):
     ruta = nombre+'.wav'
     #iniciamos reconocimiento de voz
@@ -64,21 +68,41 @@ def transcribirAudio(nombre):
     except:
         print("No se puede borrar audio")
     return texto
+'''
+
+def transcribirAudio(nombre):
+    ruta = nombre+'.wav'
+
+    with open(os.devnull, 'w') as devnull:
+        # Iniciamos reconocimiento de voz
+        re = sr.Recognizer()
+        # Conversion audio-texto
+        with sr.AudioFile(ruta) as source:
+            info_audio = re.record(source)
+            texto = re.recognize_google(info_audio, language="es-ES", show_all=False, key=None)
+    try:
+        os.remove(ruta)
+    except:
+        print("No se puede borrar audio")  
+    return texto
 
 #Traducir un texto al ingles
 def traducir(texto):
-	trans = Translator()
-	trans_sen = trans.translate(texto,dest='en')
-	sleep(0.1)
-	return trans_sen.text
-
+    try:
+        trans = Translator()
+        trans_sen = trans.translate(texto,dest='en')
+	    #sleep(0.1)
+        return trans_sen.text
+    except:
+        return texto
+	
 #Analisis de sentimiento de un texto
 def analisisSentimiento(texto):
     sentimiento = TextBlob(traducir(texto)).sentiment.polarity
     return sentimiento
 
 #Metedo para obtener un objeto para poder lanzar request a la api de youtube
-def get_youtube():
+def getYoutube():
     DEVELOPER_KEY = "AIzaSyB0Z5YoVzZPgH1EOSVFJAL5X8EBb9qbSPU"
     YOUTUBE_API_SERVICE_NAME = "youtube"
     YOUTUBE_API_VERSION = "v3"
@@ -91,7 +115,7 @@ def obtenerVideos(url):
     yt = YouTube(url)
     channel_id = yt.channel_id
     
-    youtube=get_youtube()
+    youtube=getYoutube()
     request = youtube.search().list(
         part='snippet',
         channelId=channel_id,  # Reemplaza con el ID del canal que deseas obtener los videos
@@ -102,7 +126,7 @@ def obtenerVideos(url):
 
 #Metodo para obtener los comentarios de un video
 def obtenerComentarios(video_id):
-    youtube=get_youtube()
+    youtube=getYoutube()
     
     request = youtube.commentThreads().list(
         part='snippet',
@@ -128,8 +152,7 @@ for video in listaVideos["items"]: #Recorremos todos los videos
 
     # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
     receta = Receta(video_url)
-    receta.titulo = video['snippet']['title']
-    receta.texto = descargarVideo(video_url)
+    #receta.texto = descargarVideo(video_url)
     
     # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
     listaComentarios = obtenerComentarios(video_id)
@@ -139,7 +162,7 @@ for video in listaVideos["items"]: #Recorremos todos los videos
         comment = comentario['snippet']['topLevelComment']
         texto = comment['snippet']['textDisplay']
         texto = re.sub('[^\w\s#@/:%.,_-]', '', texto, flags=re.UNICODE)
-        sentimiento = analisisSentimiento(texto)
+        sentimiento = analisisSentimiento(str(texto))
         sentimientoAcumulado+=sentimiento
         if sentimiento < 0:
             receta.c_negativo+=1
@@ -150,10 +173,9 @@ for video in listaVideos["items"]: #Recorremos todos los videos
         comentarios.append(texto)
     receta.comentarios = len(comentarios)
     receta.sentimiento = sentimientoAcumulado/receta.comentarios
-
-    obtener_nutriscore(receta.texto)
-
     # 5. AÑADIMOS MÁS ATRIBUTOS
+    receta.titulo = video['snippet']['title']
+    obtener_nutriscore(receta.texto)
     receta.categoria = ''
     receta.nutriscore = ''
 
