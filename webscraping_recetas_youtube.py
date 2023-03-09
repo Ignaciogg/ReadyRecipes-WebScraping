@@ -160,7 +160,7 @@ for video in listaVideos["items"]: #Recorremos todos los videos
             receta.c_neutro+=1
         comentarios.append(texto)
     receta.comentarios = len(comentarios)
-    receta.sentimiento = sentimientoAcumulado/receta.comentarios
+    receta.sentimiento = ((sentimientoAcumulado/receta.comentarios)+1) / 2 * 100
     # 5. AÑADIMOS MÁS ATRIBUTOS
     receta.titulo = video['snippet']['title']
     receta.nutriscore = obtener_nutriscore(receta.texto)
