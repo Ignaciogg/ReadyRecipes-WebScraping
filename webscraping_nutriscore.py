@@ -29,7 +29,7 @@ def obtener_nutriscore(texto_receta):
                 letras_a_numeros = {"a": 5, "b": 4, "c": 3, "d": 2, "e": 1}
                 sumatorio += letras_a_numeros[nutriscore]
                 contador+=1
-    return sumatorio/contador    
+    return sumatorio / contador if contador > 0 else 0 
 
 
 
