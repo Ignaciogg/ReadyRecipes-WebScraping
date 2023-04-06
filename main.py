@@ -7,6 +7,7 @@
 from pytube import YouTube
 import os
 import re
+import pickle
 import speech_recognition as sr
 from textblob import TextBlob
 from googletrans import Translator
@@ -16,6 +17,7 @@ from googleapiclient.discovery import build
 
 from Receta import Receta
 from Bbdd import Bbdd
+import clasificador
 from webscraping_nutriscore import obtener_nutriscore
 
 maxVideos = 1000
@@ -160,13 +162,16 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     receta.comentarios = len(comentarios)
     receta.sentimiento = ((sentimientoAcumulado/receta.comentarios)+1) / 2 * 100
     
-    # 5. AÑADIMOS MÁS ATRIBUTOS
+    # 5. AÑADIMOS NUTRISCORE Y TITULO
     receta.titulo = video['snippet']['title']
     receta.nutriscore = obtener_nutriscore(receta.texto)
-    #receta.categoria = ''
+
+    # 6. CLASIFICAMOS LA CATEGORÍA
+    cat = clasificador.categorizar('./ClasificadorCategoria/Modelos/KNN1.sav', receta.texto)
+    receta.categoria = cat
     
 
     print(receta.toString())
 
-    # 6. INSERTAMOS EN LA BASE DE DATOS
+    # 7. INSERTAMOS EN LA BASE DE DATOS
     bd.insertarReceta(receta)    

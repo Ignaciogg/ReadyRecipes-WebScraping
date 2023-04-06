@@ -3,9 +3,9 @@ import datetime
 
 class Receta:
     url = ""
-    titulo = "prueba"
+    titulo = ""
     texto = ""
-    categoria = "Sin asignar"
+    categoria = ""
     nutriscore = 0.0
     comentarios = 0
     sentimiento = 0.0
