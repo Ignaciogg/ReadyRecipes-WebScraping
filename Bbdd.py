@@ -28,3 +28,9 @@ class Bbdd:
         val = (receta.url, receta.titulo, receta.texto, receta.categoria, receta.comentarios, receta.nutriscore, receta.sentimiento, receta.c_positivo, receta.c_neutro, receta.c_negativo, receta.f_creacion)
         self.cursor.execute(sql, val)
         self.db.commit()
+
+    def extraerTextoReceta(self):
+        sql = "SELECT Receta.texto FROM Receta WHERE Receta.categoria=%s", (val,)
+        self.cursor.execute(sql)
+        result = self.cursor.fetchall()
+        return result
