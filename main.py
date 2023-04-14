@@ -6,10 +6,10 @@
 
 import warnings
 from pytube import YouTube
+import urllib.request
 import json
 import os
 import re
-import requests
 import speech_recognition as sr
 from textblob import TextBlob
 from googletrans import Translator
@@ -25,6 +25,7 @@ warnings.filterwarnings('ignore')
 maxVideos = 1000
 maxComents = 1000
 bd = Bbdd()
+url = "http://127.0.0.1:8000/api/nuevaReceta"
 
 #Descargar video desde una url
 def descargarVideo(url):
@@ -108,7 +109,7 @@ def obtenerVideos(url):
     youtube=getYoutube()
     request = youtube.search().list(
         part='snippet',
-        channelId=channel_id,  # Reemplaza con el ID del canal que deseas obtener los videos
+        channelId=channel_id,
         maxResults=maxVideos
     )
     response = request.execute()
@@ -132,47 +133,54 @@ superGustoso = 'https://www.youtube.com/watch?v=zfD0C3_gl7Q'
 listaVideos = obtenerVideos(superGustoso)
 
 for video in listaVideos["items"]: #Recorremos todos los videos
-    video_id = video["id"]["videoId"]
-    video_url = f"https://www.youtube.com/watch?v={video_id}"
+    try:
+        video_id = video["id"]["videoId"]
+        video_url = f"https://www.youtube.com/watch?v={video_id}"
 
-    # 2. COMPROBAR SI YA TENEMOS ESTA URL
-    if not bd.comprobarVideo(video_url):
+        # 2. COMPROBAR SI YA TENEMOS ESTA URL
+        if not bd.comprobarVideo(video_url):
+            continue
+
+        # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
+        receta = Receta(video_url)
+        borrarficheros()
+        receta.texto = descargarVideo(video_url)
+        
+        # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
+        listaComentarios = obtenerComentarios(video_id)
+        comentarios = []
+        sentimientoAcumulado = 0
+        for comentario in listaComentarios['items']:
+            comment = comentario['snippet']['topLevelComment']
+            texto = comment['snippet']['textDisplay']
+            texto = re.sub('[^\w\s#@/:%.,_-]', '', texto, flags=re.UNICODE)
+            sentimiento = analisisSentimiento(str(texto))
+            sentimientoAcumulado+=sentimiento
+            if sentimiento < 0:
+                receta.c_negativo+=1
+            elif sentimiento > 0:
+                receta.c_positivo+=1
+            else:
+                receta.c_neutro+=1
+            comentarios.append(texto)
+        receta.comentarios = len(comentarios)
+        receta.sentimiento = ((sentimientoAcumulado/receta.comentarios)+1) / 2 * 100
+        
+        # 5. AÑADIMOS MÁS ATRIBUTOS
+        receta.titulo = video['snippet']['title']
+        receta.nutriscore = obtener_nutriscore(receta.texto)
+        receta.categoria = categorizar(receta.texto) 
+        # 6. INSERTAMOS EN LA BASE DE DATOS
+        receta_json = json.dumps(receta.to_dict(), cls=RecetaEncoder)
+        receta_json = receta_json.encode('utf-8')
+
+        req = urllib.request.Request(url, receta_json)
+        req.add_header('Content-Type', 'application/json')
+        response = urllib.request.urlopen(req)
+
+        #response_text = response.read().decode('utf-8')
+        #print(response_text)
+    except:
+        print("Error al procesar el video: ", video_url)
         continue
-
-    # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
-    receta = Receta(video_url)
-    borrarficheros()
-    receta.texto = descargarVideo(video_url)
     
-    # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
-    listaComentarios = obtenerComentarios(video_id)
-    comentarios = []
-    sentimientoAcumulado = 0
-    for comentario in listaComentarios['items']:
-        comment = comentario['snippet']['topLevelComment']
-        texto = comment['snippet']['textDisplay']
-        texto = re.sub('[^\w\s#@/:%.,_-]', '', texto, flags=re.UNICODE)
-        sentimiento = analisisSentimiento(str(texto))
-        sentimientoAcumulado+=sentimiento
-        if sentimiento < 0:
-            receta.c_negativo+=1
-        elif sentimiento > 0:
-            receta.c_positivo+=1
-        else:
-            receta.c_neutro+=1
-        comentarios.append(texto)
-    receta.comentarios = len(comentarios)
-    receta.sentimiento = ((sentimientoAcumulado/receta.comentarios)+1) / 2 * 100
-    
-    # 5. AÑADIMOS MÁS ATRIBUTOS
-    receta.titulo = video['snippet']['title']
-    receta.nutriscore = obtener_nutriscore(receta.texto)
-    receta.categoria = categorizar(receta.texto) 
-    
-    receta_json = json.dumps(receta.to_dict(), cls=RecetaEncoder)
-    print(receta_json)
-    
-    # 6. INSERTAMOS EN LA BASE DE DATOS
-    response = requests.post('http://127.0.0.1:8000/api/nuevaReceta', json=receta_json)
-    print(response)
-    #bd.insertarReceta(receta)    
