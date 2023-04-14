@@ -4,19 +4,23 @@
 # pip install textblob
 # pip install googletrans==4.0.0-rc1
 
+import warnings
 from pytube import YouTube
+import json
 import os
 import re
+import requests
 import speech_recognition as sr
 from textblob import TextBlob
 from googletrans import Translator
 from time import sleep
 from ffmpy import FFmpeg
 from googleapiclient.discovery import build
-
-from Receta import Receta
+from categorizar import categorizar
+from Receta import Receta, RecetaEncoder
 from Bbdd import Bbdd
 from webscraping_nutriscore import obtener_nutriscore
+warnings.filterwarnings('ignore')
 
 maxVideos = 1000
 maxComents = 1000
@@ -163,10 +167,12 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     # 5. AÑADIMOS MÁS ATRIBUTOS
     receta.titulo = video['snippet']['title']
     receta.nutriscore = obtener_nutriscore(receta.texto)
-    #receta.categoria = ''
+    receta.categoria = categorizar(receta.texto) 
     
-
-    print(receta.toString())
-
+    receta_json = json.dumps(receta.to_dict(), cls=RecetaEncoder)
+    print(receta_json)
+    
     # 6. INSERTAMOS EN LA BASE DE DATOS
-    bd.insertarReceta(receta)    
+    response = requests.post('http://127.0.0.1:8000/api/nuevaReceta', json=receta_json)
+    print(response)
+    #bd.insertarReceta(receta)    

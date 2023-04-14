@@ -16,7 +16,7 @@ class Bbdd:
 
     #Comprobar si un video ya existe en la base de datos
     def comprobarVideo(self, url):
-        self.cursor.execute("SELECT * FROM Receta WHERE url=%s", (url,))
+        self.cursor.execute("SELECT * FROM recetas WHERE url=%s", (url,))
         consultaURL = self.cursor.fetchone()
         if consultaURL is None:
             return True
@@ -24,7 +24,7 @@ class Bbdd:
             return False 
     
     def insertarReceta(self, receta):
-        sql = "INSERT INTO Receta (url, titulo, texto, categoria, comentarios, nutriscore, sentimiento, comentarios_positivos, comentarios_neutros, comentarios_negativos, fecha_creacion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        val = (receta.url, receta.titulo, receta.texto, receta.categoria, receta.comentarios, receta.nutriscore, receta.sentimiento, receta.c_positivo, receta.c_neutro, receta.c_negativo, receta.f_creacion)
+        sql = "INSERT INTO recetas (url, titulo, texto, categoria, comentarios, nutriscore, sentimiento, comentarios_positivos, comentarios_neutros, comentarios_negativos) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (receta.url, receta.titulo, receta.texto, receta.categoria, receta.comentarios, receta.nutriscore, receta.sentimiento, receta.c_positivo, receta.c_neutro, receta.c_negativo)
         self.cursor.execute(sql, val)
         self.db.commit()
