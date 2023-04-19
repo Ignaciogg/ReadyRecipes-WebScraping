@@ -19,13 +19,15 @@ from googleapiclient.discovery import build
 from categorizar import categorizar
 from Receta import Receta, RecetaEncoder
 from Bbdd import Bbdd
+from webscraping_ingredientes import buscar_ingredientes
 from webscraping_nutriscore import obtener_nutriscore
 warnings.filterwarnings('ignore')
 
 maxVideos = 1000
 maxComents = 1000
 bd = Bbdd()
-url = "http://127.0.0.1:8000/api/nuevaReceta"
+urlReceta = "http://127.0.0.1:8000/api/nuevaReceta"
+urlIngrediente = "http://127.0.0.1:8000/api/nuevoIngrediente"
 
 #Descargar video desde una url
 def descargarVideo(url):
@@ -174,12 +176,16 @@ for video in listaVideos["items"]: #Recorremos todos los videos
         receta_json = json.dumps(receta.to_dict(), cls=RecetaEncoder)
         receta_json = receta_json.encode('utf-8')
 
-        req = urllib.request.Request(url, receta_json)
+        req = urllib.request.Request(urlReceta, receta_json)
         req.add_header('Content-Type', 'application/json')
         response = urllib.request.urlopen(req)
-
-        #response_text = response.read().decode('utf-8')
-        #print(response_text)
+        
+        listaIngredientes = buscar_ingredientes(receta.texto)
+        for ingrediente in listaIngredientes:
+            ingrediente = {"nombre": ingrediente, "id_Receta": receta.id}
+            ingrediente_json = json.dumps(ingrediente).encode('utf-8')
+            req = urllib.request.Request(urlIngrediente, ingrediente_json)
+            
     except:
         print("Error al procesar el video: ", video_url)
         continue

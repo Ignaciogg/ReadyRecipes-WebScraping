@@ -167,8 +167,9 @@ def get_url_order(orden, ingredient):
 
     return url_productos
 
-def buscar_ingredientes(receta, lista_alimentos_csv):
-    alimentos_csv_list = lista_alimentos_csv['Nombre'].values
+def buscar_ingredientes(receta):
+    food = pd.read_csv('./food.csv')
+    alimentos_csv_list = food['Nombre'].values
     receta_lower=normalize(receta)
     lista_ingredientes= []
     

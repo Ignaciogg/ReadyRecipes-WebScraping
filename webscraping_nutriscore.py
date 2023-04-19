@@ -9,10 +9,7 @@ from webscraping_ingredientes import buscar_ingredientes, buscador_precios_por_s
 from Receta import Receta
 
 def obtener_nutriscore(texto_receta):
-    food = pd.read_csv('./food.csv')
-    food.drop(['Unnamed: 0'], axis=1, inplace=True)
-
-    lista_ingredientes = buscar_ingredientes(texto_receta, food)
+    lista_ingredientes = buscar_ingredientes(texto_receta)
     data = buscador_precios_por_supermercado(lista_ingredientes, "mercadona")
     
     contador = 0
@@ -30,10 +27,7 @@ def obtener_nutriscore(texto_receta):
                 sumatorio += letras_a_numeros[nutriscore]
                 contador+=1
     return sumatorio / contador if contador > 0 else 0 
-
-
-
-
+      
 
 '''
 def obtener_nutriscore(texto_receta):
