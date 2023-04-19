@@ -170,7 +170,8 @@ for video in listaVideos["items"]: #Recorremos todos los videos
         
         # 5. AÑADIMOS MÁS ATRIBUTOS
         receta.titulo = video['snippet']['title']
-        receta.nutriscore = obtener_nutriscore(receta.texto)
+        listaIngredientes = buscar_ingredientes(receta.texto)
+        receta.nutriscore = obtener_nutriscore(listaIngredientes)
         receta.categoria = categorizar(receta.texto) 
         # 6. INSERTAMOS EN LA BASE DE DATOS
         receta_json = json.dumps(receta.to_dict(), cls=RecetaEncoder)
@@ -179,13 +180,22 @@ for video in listaVideos["items"]: #Recorremos todos los videos
         req = urllib.request.Request(urlReceta, receta_json)
         req.add_header('Content-Type', 'application/json')
         response = urllib.request.urlopen(req)
-        
-        listaIngredientes = buscar_ingredientes(receta.texto)
+        response_text = response.read().decode('utf-8')
+        response_text = json.loads(response_text)
+        receta.id = response_text['id']
+        print("id: ", receta.id)
         for ingrediente in listaIngredientes:
             ingrediente = {"nombre": ingrediente, "id_Receta": receta.id}
             ingrediente_json = json.dumps(ingrediente).encode('utf-8')
+            print(ingrediente_json)
             req = urllib.request.Request(urlIngrediente, ingrediente_json)
-            
+            req.add_header('Content-Type', 'application/json')
+            response = urllib.request.urlopen(req)
+            response_text = response.read().decode('utf-8')
+            response_text = json.loads(response_text)
+            print(response_text)
+
+        print("Receta insertada correctamente: ")
     except:
         print("Error al procesar el video: ", video_url)
         continue

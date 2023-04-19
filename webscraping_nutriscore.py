@@ -8,8 +8,7 @@ import requests
 from webscraping_ingredientes import buscar_ingredientes, buscador_precios_por_supermercado
 from Receta import Receta
 
-def obtener_nutriscore(texto_receta):
-    lista_ingredientes = buscar_ingredientes(texto_receta)
+def obtener_nutriscore(lista_ingredientes):
     data = buscador_precios_por_supermercado(lista_ingredientes, "mercadona")
     
     contador = 0

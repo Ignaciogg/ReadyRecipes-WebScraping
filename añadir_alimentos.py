@@ -31,7 +31,6 @@ def nutriscore():
         #enviamos una peticion a la api para guardar el nutriscore
         alimento = {"nombre": alimento, "nutriscore": media}
         alimento_json = json.dumps(alimento).encode('utf-8')
-        print(alimento_json)
         req = urllib.request.Request(urlApi, alimento_json)
         req.add_header('Content-Type', 'application/json')
         respuesta = urllib.request.urlopen(req)
