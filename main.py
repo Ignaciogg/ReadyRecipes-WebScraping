@@ -138,13 +138,13 @@ for video in listaVideos["items"]: #Recorremos todos los videos
     try:
         video_id = video["id"]["videoId"]
         video_url = f"https://www.youtube.com/watch?v={video_id}"
-
+        video_url_enmbed = f"https://www.youtube.com/embed/{video_id}"
         # 2. COMPROBAR SI YA TENEMOS ESTA URL
-        if not bd.comprobarVideo(video_url):
+        if not bd.comprobarVideo(video_url_enmbed):
             continue
 
         # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
-        receta = Receta(video_url)
+        receta = Receta(video_url_enmbed)
         borrarficheros()
         receta.texto = descargarVideo(video_url)
         
