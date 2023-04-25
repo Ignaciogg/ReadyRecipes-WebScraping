@@ -5,74 +5,26 @@
 # pip install googletrans==4.0.0-rc1
 
 import warnings
-from pytube import YouTube
 import urllib.request
 import json
 import os
 import re
-import speech_recognition as sr
 from textblob import TextBlob
 from googletrans import Translator
-from time import sleep
-from ffmpy import FFmpeg
 from googleapiclient.discovery import build
-from categorizar import categorizar
 from Receta import Receta, RecetaEncoder
 from Bbdd import Bbdd
 from webscraping_ingredientes import buscar_ingredientes
 from webscraping_nutriscore import obtener_nutriscore
 warnings.filterwarnings('ignore')
 
-maxVideos = 1000
+categoria = 'Verdura'
+ruta = f'Textos/{categoria}'
+
 maxComents = 1000
 bd = Bbdd()
 urlReceta = "http://127.0.0.1:8000/api/nuevaReceta"
 urlIngrediente = "http://127.0.0.1:8000/api/nuevoIngrediente"
-
-#Descargar video desde una url
-def descargarVideo(url):
-    yt = YouTube(url)
-    t = yt.streams.filter(only_audio=True).first()
-    nombre = 'receta'
-    t.download('./', nombre+'.mp4')
-    convertirAudio(nombre)
-    try:
-        return transcribirAudio(nombre)
-    except:
-        print('ERROR. Audio mayor 10MB')
-        os.remove(nombre+'.wav')
-
-#Convertir video a audio
-def convertirAudio(nombre):
-    rutaEntrada = nombre+'.mp4'
-    rutaSalida = nombre+'.wav'
-
-    with open(os.devnull, 'w') as devnull:
-        ff = FFmpeg(executable='C:\\ffmpeg\\bin\\ffmpeg.exe',
-        inputs ={rutaEntrada: None},
-        outputs ={rutaSalida: None})
-        ff.run(stdout=devnull, stderr=devnull)
-
-    try:
-        os.remove(rutaEntrada)
-    except:
-        print("No se puede borrar vídeo")
-
-#Transcribir audio a texto
-def transcribirAudio(nombre):
-    ruta = nombre+'.wav'
-    with open(os.devnull, 'w') as devnull:
-        # Iniciamos reconocimiento de voz
-        re = sr.Recognizer()
-        # Conversion audio-texto
-        with sr.AudioFile(ruta) as source:
-            info_audio = re.record(source)
-            texto = re.recognize_google(info_audio, language="es-ES", show_all=False, key=None)
-    try:
-        os.remove(ruta)
-    except:
-        print("No se puede borrar audio")  
-    return texto
 
 #Borrar si existe algun fichero descargado anteriormente
 def borrarficheros():
@@ -103,20 +55,6 @@ def getYoutube():
     youtube_object = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,developerKey = DEVELOPER_KEY)
     return youtube_object
 
-#Metodo para a traves de un link de un video, obtener una lista de videos de ese canal
-def obtenerVideos(url):
-    yt = YouTube(url)
-    channel_id = yt.channel_id
-    
-    youtube=getYoutube()
-    request = youtube.search().list(
-        part='snippet',
-        channelId=channel_id,
-        maxResults=maxVideos
-    )
-    response = request.execute()
-    return response
-
 #Metodo para obtener los comentarios de un video
 def obtenerComentarios(video_id):
     youtube=getYoutube()
@@ -126,29 +64,44 @@ def obtenerComentarios(video_id):
         videoId=video_id,
         maxResults=maxComents
     )
-
     response = request.execute()
     return response
 
 # 1. EXTRAER X URLs DE UN CANAL DE YOUTUBE
-superGustoso = 'https://www.youtube.com/watch?v=qIMPyrTZqHk'
-listaVideos = obtenerVideos(superGustoso)
+listaVideos = os.listdir(ruta)
+for video in listaVideos: #Recorremos todos los videos
 
-for video in listaVideos["items"]: #Recorremos todos los videos
     try:
-        video_id = video["id"]["videoId"]
-        video_url = f"https://www.youtube.com/watch?v={video_id}"
+        rutaReceta = ruta + '/' + video
+        with open(rutaReceta, 'r', encoding='utf-8') as archivo:
+            fichero = archivo.readlines()
+            video_url = fichero[0]
+            titulo = fichero[1]
+            texto = fichero[3]
+            
+        video_id = video_url.replace('https://www.youtube.com/watch?v=', '')
         video_url_enmbed = f"https://www.youtube.com/embed/{video_id}"
-        # 2. COMPROBAR SI YA TENEMOS ESTA URL
-        if not bd.comprobarVideo(video_url_enmbed):
-            continue
+    except:
+        print("Error al obtener la url del video: ")
+        continue
+        
+    # 2. COMPROBAR SI YA TENEMOS ESTA URL
+    if not bd.comprobarVideo(video_url_enmbed):
+        print('Ya tenemos esta receta')
+        continue
 
-        # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
+    # 3. EXTRAER LA TRANSCRIPCION DE ESTA RECETA
+    try:
         receta = Receta(video_url_enmbed)
         borrarficheros()
-        receta.texto = descargarVideo(video_url)
-        
-        # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
+        receta.texto = texto
+    except:
+        print("Error al transcribir el video: ", video_url)
+        continue
+    
+    # 4. EXTRAER LOS COMENTARIOS DE ESTE VIDEO
+    try:
+        print(video_id)
         listaComentarios = obtenerComentarios(video_id)
         comentarios = []
         sentimientoAcumulado = 0
@@ -167,13 +120,21 @@ for video in listaVideos["items"]: #Recorremos todos los videos
             comentarios.append(texto)
         receta.comentarios = len(comentarios)
         receta.sentimiento = ((sentimientoAcumulado/receta.comentarios)+1) / 2 * 100
-        
-        # 5. AÑADIMOS MÁS ATRIBUTOS
-        receta.titulo = video['snippet']['title']
+    except:
+        print("Error al obtener los comentarios del video: ", video_url)
+        continue
+    
+    # 5. AÑADIMOS MÁS ATRIBUTOS
+    try:
+        receta.titulo = titulo
         listaIngredientes = buscar_ingredientes(receta.texto)
         receta.nutriscore = obtener_nutriscore(listaIngredientes)
-        receta.categoria = categorizar(receta.texto) 
-        # 6. INSERTAMOS EN LA BASE DE DATOS
+        receta.categoria = categoria 
+    except:
+        print("Error al obtener los atributos del video: ", video_url)
+        continue
+    # 6. INSERTAMOS EN LA BASE DE DATOS
+    try:
         receta_json = json.dumps(receta.to_dict(), cls=RecetaEncoder)
         receta_json = receta_json.encode('utf-8')
 
@@ -194,9 +155,9 @@ for video in listaVideos["items"]: #Recorremos todos los videos
             response_text = response.read().decode('utf-8')
             response_text = json.loads(response_text)
             print(response_text)
-
-        print("Receta insertada correctamente: ")
     except:
-        print("Error al procesar el video: ", video_url)
+        print("Error al insertar la receta en la base de datos: ", video_url)
         continue
+
+    print("Receta insertada correctamente: ")
     
